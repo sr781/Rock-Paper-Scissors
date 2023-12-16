@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            const game = ["Rock", "Paper", "Scissors"];
+            return game[Math.floor(Math.random() * 3)];
+        }
+
+
+        function winnerChecker() {
+            let playerSelection = getComputerChoice();
+            let computerSelection = getComputerChoice(); 
+          
+            if (
+              (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+              (playerSelection === 'Scissors' && computerSelection === 'Paper') ||
+              (playerSelection === 'Paper' && computerSelection === 'Rock')
+            ) {
+              //return `${playerSelection} beats ${computerSelection}, You won!`;
+              return "Player"
+            } else if (
+              (computerSelection === 'Rock' && playerSelection === 'Scissors') ||
+              (computerSelection === 'Scissors' && playerSelection === 'Paper') ||
+              (computerSelection === 'Paper' && playerSelection === 'Rock')
+            ) {
+              //return `${computerSelection} beats ${playerSelection}, You lost!`;
+              return "Computer"
+            } else {
+              //return `It's a Draw! You both chose ${playerSelection}`;
+              return "Draw"
+            }
+          }
+
+          function game(){
+            let playerCount = 0;
+            let computerCount = 0;
+            let roundCount = 0;
+            while (playerCount < 5 && computerCount < 5){
+                roundCount ++;
+                let resultGame = winnerChecker();
+                if (resultGame === "Player"){
+                    playerCount ++;
+                    console.log(`For round ${roundCount}, the Player Won`);
+                } else if (resultGame === "Computer"){
+                    computerCount ++;
+                    console.log(`For round ${roundCount}, the Computer Won`)
+                } else{
+                    console.log(`For round ${roundCount}, it is a draw`);
+                }
+
+                console.log(`The scores are currently ${playerCount} points for the Player and ${computerCount} points for the Computer`)
+            }
+            if (playerCount > computerCount){
+                console.log("End of Game, the Player Won");
+            } else{
+                console.log("End of Game, the Computer Won");
+            }
+          }
+        console.log(game());
+    </script>
+</body>
+</html>
